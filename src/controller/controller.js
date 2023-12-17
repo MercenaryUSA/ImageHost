@@ -1,5 +1,5 @@
 const uploadFile = require("../middleware/upload");
-const fs = require("node:fs");
+const fs = require("fs");
 
 const baseUrl = "https://images.mercenaryusa.dev/uploads/";
 
