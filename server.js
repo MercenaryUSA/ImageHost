@@ -1,21 +1,33 @@
-const cors = require("cors");
-const express = require("express");
-const app = express();
+const express = require('express');
+const multer = require('multer');
+const cors = require('cors');
 
-global.__basedir = __dirname;
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/')
+  },
+  filename: function (req, file, cb) {
+    cb(null, `${Date.now()}-${file.originalname}`)
+  }
+});
+
+const upload = multer({ dest: 'uploads/', storage: storage });
+const baseUrl = "https://images.mercenaryusa.dev/files/";
 
 var corsOptions = {
-  origin: "http://images.mercenaryusa.dev:81"
+  origin: "https://images.mercenaryusa.dev"
 };
 
+const app = express();
+app.use(express.urlencoded({ extended: true }));
 app.use(cors(corsOptions));
 
-const initRoutes = require("./src/routes");
-
-app.use(express.urlencoded({ extended: true }));
-initRoutes(app);
-
-let port = 80;
-app.listen(port, () => {
-  console.log(`Running on port:${port}`);
+app.post('/upload', upload.single('file'), (req, res) => {
+  res.send(`${baseUrl}${req.file.filename}`);
 });
+
+app.get('/files/:name', (req, res) => {
+  res.sendFile(`${__dirname}/uploads/${req.params.name}`);
+});
+
+app.listen(443, () => console.log('Server started on port 443'));
