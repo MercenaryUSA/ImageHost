@@ -5,7 +5,7 @@ const app = express();
 global.__basedir = __dirname;
 
 var corsOptions = {
-  origin: "http://localhost:8081"
+  origin: "http://images.mercenaryusa.dev:8081"
 };
 
 app.use(cors(corsOptions));
@@ -17,5 +17,5 @@ initRoutes(app);
 
 let port = 8080;
 app.listen(port, () => {
-  console.log(`Running at localhost:${port}`);
+  console.log(`Running on port:${port}`);
 });
