@@ -7,7 +7,7 @@ const fs = require('fs');
 
 const options = {
   key: '~/domain.privatekey.pem',
-  cert: '~/domain.cert.pem'
+  cert: '~/domain.cert.crt'
 };
 
 const storage = multer.diskStorage({
