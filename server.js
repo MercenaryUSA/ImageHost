@@ -6,8 +6,8 @@ const https = require('https');
 const fs = require('fs');
 
 const options = {
-  key: '/etc/ssl/certs/domain.privatekey.pem',
-  cert: '/usr/local/share/ca-certificates/domain.cert.crt'
+  key: '~/etc/ssl/certs/domain.privatekey.pem',
+  cert: '~/etc/ssl/certs/domain.cert.pem'
 };
 
 const storage = multer.diskStorage({
