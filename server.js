@@ -30,8 +30,4 @@ app.get('/files/:name', (req, res) => {
   res.sendFile(`${__dirname}/uploads/${req.params.name}`);
 });
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
-
 app.listen(80, () => console.log('Server started on port 80'));
