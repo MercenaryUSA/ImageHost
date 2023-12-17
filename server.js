@@ -6,7 +6,7 @@ const https = require('https');
 const fs = require('fs');
 
 const options = {
-  key: fs.readFileSync('~/domain.privatekey.pem'),
+  key: fs.readFileSync('/domain.privatekey.pem'),
   cert: fs.readFileSync('~/domain.cert.pem')
 };
 
