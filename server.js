@@ -6,7 +6,7 @@ const https = require('https');
 const fs = require('fs');
 
 const options = {
-  key: '/etc/ssl/private/domain.privatekey.pem',
+  key: '/domain.privatekey.pem',
   cert: '/etc/ssl/certs/domain.cert.pem'
 };
 
