@@ -8,15 +8,19 @@ const upload = async (req, res) => {
     await uploadFile(req, res);
 
     if (req.file == undefined) {
-      return res.status(400).send({ message: "Please upload a file!" });
+      return res.status(400).send({ 
+        status: "error",
+        message: "Please upload a file!" });
     }
 
     res.status(200).send({
-      message: "Uploaded the file successfully: " + req.file.originalname,
+        status: "success",
+        url: `${baseUrl}${req.file.filename}`,
     });
   } catch (err) {
     res.status(500).send({
-      message: `Could not upload the file: ${err}`,
+        status: "error",
+        message: `Could not upload the file: ${err}`,
     });
   }
 };
