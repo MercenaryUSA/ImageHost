@@ -1,7 +1,7 @@
 const uploadFile = require("../middleware/upload");
 const fs = require("fs");
 
-const baseUrl = "http://images.mercenaryusa.dev/uploads/";
+const baseUrl = "http://images.mercenaryusa.dev/files/";
 
 const upload = async (req, res) => {
   try {
