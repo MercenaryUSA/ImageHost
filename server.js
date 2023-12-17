@@ -39,4 +39,4 @@ app.get('/files/:name', (req, res) => {
 });
 
 http.createServer(app).listen(80);
-// https.createServer(options, app).listen(443);
+https.createServer(options, app).listen(443);
