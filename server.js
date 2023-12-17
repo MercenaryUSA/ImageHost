@@ -1,14 +1,6 @@
 const express = require('express');
 const multer = require('multer');
 const cors = require('cors');
-const http = require('http');
-const https = require('https');
-const fs = require('fs');
-
-const options = {
-  key: fs.readFileSync('/domain.privatekey.pem'),
-  cert: fs.readFileSync('/domain.cert.pem')
-};
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -20,10 +12,10 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ dest: 'uploads/', storage: storage });
-const baseUrl = "https://images.mercenaryusa.dev/files/";
+const baseUrl = "http://images.mercenaryusa.dev/files/";
 
 var corsOptions = {
-  origin: "https://images.mercenaryusa.dev"
+  origin: "http://images.mercenaryusa.dev"
 };
 
 const app = express();
@@ -38,5 +30,4 @@ app.get('/files/:name', (req, res) => {
   res.sendFile(`${__dirname}/uploads/${req.params.name}`);
 });
 
-http.createServer(app).listen(80);
-https.createServer(options, app).listen(443);
+app.listen(80, () => console.log('Server started on port 80'));
