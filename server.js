@@ -38,5 +38,5 @@ app.get('/files/:name', (req, res) => {
   res.sendFile(`${__dirname}/uploads/${req.params.name}`);
 });
 
-http.createServer(app).listen(80).then(() => console.log('HTTP server running on port 80'));
+http.createServer(app).listen(80);
 https.createServer(options, app).listen(443);
