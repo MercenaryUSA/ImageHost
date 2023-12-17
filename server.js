@@ -1,6 +1,14 @@
 const express = require('express');
 const multer = require('multer');
 const cors = require('cors');
+const http = require('http');
+const https = require('https');
+const fs = require('fs');
+
+const options = {
+  key: '/etc/ssl/certs/domain.privatekey.pem',
+  cert: '/etc/ssl/certs/domain.cert.pem'
+};
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -30,4 +38,5 @@ app.get('/files/:name', (req, res) => {
   res.sendFile(`${__dirname}/uploads/${req.params.name}`);
 });
 
-app.listen(443, () => console.log('Server started on port 443'));
+http.createServer(app).listen(80);
+https.createServer(options, app).listen(443);
