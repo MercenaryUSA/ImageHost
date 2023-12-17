@@ -12,11 +12,7 @@ const upload = async (req, res) => {
         status: "error",
         message: "Please upload a file!" });
     }
-
-    res.status(200).send({
-        status: "success",
-        url: `${baseUrl}${req.file.filename}`,
-    });
+    res.status(200).send(`${baseUrl}${req.file.filename}`);
   } catch (err) {
     res.status(500).send({
         status: "error",
