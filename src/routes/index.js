@@ -6,6 +6,9 @@ let routes = (app) => {
   router.post("/upload", controller.upload);
   router.get("/files", controller.getListFiles);
   router.get("/files/:name", controller.download);
+  router.get('/', (req, res) => {
+    res.send('Hello World!');
+  });
 
   app.use(router);
 };
