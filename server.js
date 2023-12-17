@@ -6,7 +6,7 @@ const https = require('https');
 const fs = require('fs');
 
 const options = {
-  key: '~/etc/ssl/certs/domain.privatekey.pem',
+  key: '~/etc/ssl/private/domain.privatekey.pem',
   cert: '~/usr/local/share/ca-certificates/domain.cert.crt'
 };
 
